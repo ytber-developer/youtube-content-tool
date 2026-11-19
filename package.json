@@ -1,0 +1,58 @@
+{
+  "name": "youtube-account-manager",
+  "version": "2.0.0",
+  "private": true,
+  "description": "YouTube Account Manager - Automated 2FA verification, channel creation, and avatar upload",
+  "main": "src/server.js",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "./start-dev.sh",
+    "dev:backend": "nodemon src/server.js",
+    "dev:frontend": "npm run dev -w frontend",
+    "dev:all": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build": "./build-prod.sh",
+    "build:frontend": "npm run build -w frontend",
+    "start:frontend": "npm run start -w frontend",
+    "setup": "npm install",
+    "prepare": "git config core.hooksPath .githooks || true",
+    "migrate": "node src/database/migrate.js",
+    "migrate:undo": "node src/database/migrate.js --undo",
+    "migrate:fresh": "node src/database/migrate.js --fresh",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "echo \"Linting not configured yet\"",
+    "docs": "echo \"Documentation available in README.md, WATCH_VIDEO_API.md, and frontend/API_REFERENCE.md\"",
+    "content": "node content-tools/cli.js",
+    "test:content": "node --test content-tools/test/*.test.js",
+    "content:setup": "node content-tools/setup.js",
+    "content:search": "node content-tools/search.js",
+    "secrets:scan": "gitleaks git . --redact --no-banner"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.3.2",
+    "adm-zip": "^0.5.16",
+    "axios": "^1.13.4",
+    "cheerio": "^1.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "https-proxy-agent": "^7.0.6",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "proxy-chain": "^2.7.1",
+    "puppeteer": "^24.37.5",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "qrcode": "^1.5.4",
+    "sequelize": "^6.37.5",
+    "speakeasy": "^2.0.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2"
+  }
+}

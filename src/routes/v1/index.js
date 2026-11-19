@@ -1,0 +1,29 @@
+const express = require('express');
+const router = express.Router();
+
+const verifyRoutes = require('./verify.routes');
+const youtubeRoutes = require('./youtube.routes');
+const watchRoutes = require('./watch.routes');
+const loginRoutes = require('./login.routes');
+const uploadRoutes = require('./upload.routes');
+const accountsRoutes = require('./accounts.routes');
+const facebookReelRoutes = require('../facebook.reel.routes');
+const setupRoutes = require('./setup.routes');
+const campaignRoutes = require('./campaign.routes');
+const proxyRoutes = require('./proxy.routes');
+const contentRoutes = require('./content.routes');
+
+// Mount routes
+router.use('/authenticator', verifyRoutes);
+router.use('/youtube', youtubeRoutes);
+router.use('/watch', watchRoutes);
+router.use('/login', loginRoutes);
+router.use('/upload', uploadRoutes);
+router.use('/accounts', accountsRoutes);
+router.use('/facebook', facebookReelRoutes);
+router.use('/setup', setupRoutes);
+router.use('/campaigns', campaignRoutes);
+router.use('/proxies', proxyRoutes);
+router.use('/content', contentRoutes);
+
+module.exports = router;
